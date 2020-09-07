@@ -8,54 +8,57 @@ common_words = ["is", "a", "then", "that", "there", "to", "if", "this", "it", "i
 student_list = []
 
 wanted_common_words_removed = True
+wanted_caps_filter = True
 
 Path = "C:\\Users\\royal\\source\\repos\\txt_parse2\\txt_parse2\\Responses\\"
 filelist = os.listdir(Path)
 for x in filelist:
 	if x.endswith(".txt"):
+########## store student's name
+		student_name = str(x).replace(".txt", "").replace("_", " ")
+########## open and read file
 		temp = open(Path + x, "r")
 		temp2 = temp.read()
-##########
-
-		temp2 = temp2.replace('\n', " ")
+########## remove punctuation
 		for i in temp2:
 			if i in punc:
 				temp2 = temp2.replace(i, "")
-
-		temp2 = temp2.lower()
+########## remove new lines
+		temp2 = temp2.replace('\n', " ")
+########## caps filter
+		if wanted_caps_filter:
+			temp2 = temp2.lower()
+########## split into list
 		doc = temp2.split(" ")
-		student_name = str(x).replace(".txt", "").replace("_", " ")
+########## sort list
 		doc = sorted(doc)
-		print(doc)
-##########
+########## common word remover
 		doc2 = []
-		com_count = 0
 		i = 1
 		j = 1
-		while i <= len(doc):
-			if doc[i-1] not in common_words:
-				doc2.append(doc[i-1])
-			else:
-				if doc[i-1] != "":
-					com_count += 1
-			i += 1
-##########
 		if wanted_common_words_removed:
-			doc3 = doc2
+			com_count = 0
+			while i <= len(doc):
+				if doc[i-1] not in common_words:
+					doc2.append(doc[i-1])
+				else:
+					if doc[i-1] != "":
+						com_count += 1
+				i += 1
 		else:
-			doc3 = doc
-##########
+			doc2 = doc
+########## word counter
 		i = 1
 		j = 1
 		words = []
 		while i <= len(doc2):
 			if (i-1) == 0:
-					words.append(percenter(doc2[i-1], doc2.count(doc2[i-1])))
-			if words[j-1].word != doc2[i-1]:
+					words.append(percenter(doc2[i-1], doc2.count(doc2[i-1]))) # always adds first word
+			if words[j-1].word != doc2[i-1]: # checks if current word = previous word
 				words.append(percenter(doc2[i-1], doc2.count(doc2[i-1])))
 				j += 1
 			i += 1
-##########
+########## bubble sorts counted words from greatest to least
 		swapped = True
 		while swapped:
 			swapped = False
@@ -66,8 +69,8 @@ for x in filelist:
 					words.insert(i, tp)
 					swapped = True
 		words.reverse()
-##########		
-		student_list.append(student(student_name, temp, doc3, words, com_count, wanted_common_words_removed))
+########## creates student object with above data		
+		student_list.append(student(student_name, temp, doc2, words, com_count, wanted_common_words_removed))
 
 print(student_list[0].name +"\n"+ student_list[1].name + "\n\n")
 		
