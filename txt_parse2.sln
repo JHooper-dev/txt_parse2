@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "txt_parse2", "txt_parse2\txt_parse2.pyproj", "{E859D2FB-0985-4479-8A99-C3B05E3C4109}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E859D2FB-0985-4479-8A99-C3B05E3C4109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E859D2FB-0985-4479-8A99-C3B05E3C4109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0DBDB958-D482-4BF9-9DE3-C6968C72DFAE}
+	EndGlobalSection
+EndGlobal
