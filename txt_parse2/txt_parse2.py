@@ -3,29 +3,30 @@ from student import student
 import os
 
 punc = "!()-[]{};:\,<>./?@#$%^&*_~"
-common_words = ["is", "a", "then", "that", "there", "to", "if", "this", "it", "it's", "but", "are", "these", "and", "of", "i"]
+common_words = ["is", "a", "then", "that", "there", "to", "if", "this", "it", "it's", "but", "are", "these", "and", "of", "i", ""]
 
 student_list = []
 
 wanted_common_words_removed = True
 
-Path = "E:\\Users\\Public\\Python\\txt_parse\\txt_parse\\Responses\\"
+Path = "C:\\Users\\royal\\source\\repos\\txt_parse2\\txt_parse2\\Responses\\"
 filelist = os.listdir(Path)
 for x in filelist:
 	if x.endswith(".txt"):
 		temp = open(Path + x, "r")
 		temp2 = temp.read()
 ##########
+
+		temp2 = temp2.replace('\n', " ")
 		for i in temp2:
 			if i in punc:
 				temp2 = temp2.replace(i, "")
 
 		temp2 = temp2.lower()
-		temp2 = temp2.replace('\n', " ")
 		doc = temp2.split(" ")
 		student_name = str(x).replace(".txt", "").replace("_", " ")
 		doc = sorted(doc)
-		
+		print(doc)
 ##########
 		doc2 = []
 		com_count = 0
@@ -35,7 +36,8 @@ for x in filelist:
 			if doc[i-1] not in common_words:
 				doc2.append(doc[i-1])
 			else:
-				com_count += 1
+				if doc[i-1] != "":
+					com_count += 1
 			i += 1
 ##########
 		if wanted_common_words_removed:
