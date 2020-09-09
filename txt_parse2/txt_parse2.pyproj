@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="menu.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="percenter.py" />
     <Compile Include="student.py" />
     <Compile Include="text_parse2.py" />
